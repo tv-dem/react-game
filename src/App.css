@@ -13,6 +13,13 @@
     background-color:cornflowerblue;
 }
 
+.fruit{
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background-color:aquamarine;
+}
+
 .modal{
     height: 100%;
     width: 100%;

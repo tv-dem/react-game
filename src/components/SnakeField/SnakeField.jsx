@@ -1,7 +1,8 @@
 import React, {useEffect} from 'react';
 import Snake from "../Snake/Snake";
+import FruitContainer from "../Fruit/FruitContainer";
 
-const SnakeField = ({pos, move, onKeyDown, checkBoom, fail, setIntervalMove, clearIntervalMove}) => {
+const SnakeField = ({pos, move, onKeyDown, checkBoom, fail, setIntervalMove, clearIntervalMove, checkEatAC}) => {
   useEffect(() => {
     const event = document.addEventListener('keydown', ({code}) => {
       onKeyDown(code)
@@ -11,8 +12,9 @@ const SnakeField = ({pos, move, onKeyDown, checkBoom, fail, setIntervalMove, cle
     }
   }, []);
   return (
-    <div className={'wrapper'}>
-      <Snake pos={pos} move={move} checkBoom={checkBoom} fail={fail} setIntervalMove={setIntervalMove} clearIntervalMove={clearIntervalMove}/>
+    <div>
+      <Snake pos={pos} move={move} checkBoom={checkBoom} fail={fail} setIntervalMove={setIntervalMove} clearIntervalMove={clearIntervalMove} checkEatAC={checkEatAC}/>
+      <FruitContainer />
     </div>
   )
 }

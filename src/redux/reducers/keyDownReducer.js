@@ -1,6 +1,9 @@
 const KEY_DOWN = 'KEY_DOWN';
 const MOVE = 'MOVE';
-const CHECK_BOOM = 'CHECK_BOOM'
+const CHECK_BOOM = 'CHECK_BOOM';
+const GENERATE_FRUIT = 'GENERATE_FRUIT';
+const CHECK_EAT = 'CHECK_EAT';
+
 
 const LEFT_DIRECTION = 'LEFT_DIRECTION';
 const TOP_DIRECTION = 'TOP_DIRECTION';
@@ -8,6 +11,10 @@ const RIGHT_DIRECTION = 'RIGHT_DIRECTION';
 const BOTTOM_DIRECTION = 'BOTTOM_DIRECTION';
 
 const initState = {
+  fruitPos: {
+    top: 450,
+    left: 450,
+  },
   isFail: false,
   direction: RIGHT_DIRECTION,
   fieldSize: 450,
@@ -41,57 +48,65 @@ const initState = {
       left: 300,
       top: 0,
     }
-  ]
+  ],
+  prevTail: {
+    left: 450,
+    top: 0,
+  },
+}
+
+const generateFruitPos = (fieldSize, itemSize, snakePos) => {
+  let top, left = 0;
+  const k = fieldSize / itemSize + 1;
+  do{
+    top = getRandomInt(k) * itemSize;
+    left = getRandomInt(k) * itemSize;
+  } while(snakePos.findIndex(pos => pos.left === left && pos.top === top) !== -1);
+  return {top, left};
+}
+
+const getRandomInt = (max) => {
+  return Math.floor(Math.random(max) * max)
+}
+
+const generateNewHead = (pos, direction, fieldSize, itemSize) => {
+  const {top, left} = pos;
+  switch(direction){
+    case LEFT_DIRECTION:
+      return {top, left: left === 0 ? fieldSize : left - itemSize};
+    case RIGHT_DIRECTION:
+      return {top, left: left === fieldSize ? 0 : left + itemSize};
+    case BOTTOM_DIRECTION:
+      return {left, top: top === fieldSize ? 0 : top + itemSize};
+    case TOP_DIRECTION:
+      return {left, top: top === 0 ? fieldSize : top - itemSize};
+    default: return null;
+  }
+}
+
+const checkImposition = (head, point) => {
+  return head.left === point.left && head.top === point.top;
 }
 
 const keyDownReducer = (state = initState, action) => {
-  const {direction, fieldSize, itemSize, snakePos} = state;
+  const {direction, fieldSize, itemSize, snakePos, fruitPos, prevTail} = state;
   switch (action.type) {
     case CHECK_BOOM:{
-      const hTop = snakePos[snakePos.length - 1].top;
-      const hLeft = snakePos[snakePos.length - 1].left;
-      console.log(snakePos.length - 1)
-      const isFail = snakePos.findIndex((el, i )=> {
-        const {top, left} = el;
-        console.log(top, left, hTop, hLeft);
-        return top === hTop && left === hLeft && i !== snakePos.length - 1;
+      const head = snakePos[snakePos.length - 1];
+      const isFail = snakePos.findIndex((point, i )=> {
+        return checkImposition(head, point) && i !== snakePos.length - 1;
       })
-      console.log(isFail, snakePos)
       return {...state, isFail: isFail !== -1}
     }
-    case MOVE:
-      switch(direction){
-        case LEFT_DIRECTION:{
-          const s = [...snakePos];
-          const {left, top} = s[s.length - 1];
-          const head = {top, left: left === 0 ? fieldSize : left - itemSize};
-          s.shift();
-          return {...state, snakePos: [...s, head]};
-        }
-        case RIGHT_DIRECTION: {
-          const s = [...snakePos];
-          const {left, top} = s[s.length - 1];
-          const head = {top, left: left === fieldSize ? 0 : left + itemSize};
-          s.shift();
-          return {...state, snakePos: [...s, head]};
-        }
-        case BOTTOM_DIRECTION: {
-          const s = [...snakePos];
-          const {left, top} = s[s.length - 1];
-          const head = {left, top: top === fieldSize ? 0 : top + itemSize};
-          s.shift();
-          return {...state, snakePos: [...s, head]};
-        }
-        case TOP_DIRECTION: {
-          const s = [...snakePos];
-          const {left, top} = s[s.length - 1];
-          const head = {left, top: top === 0 ? fieldSize : top - itemSize};
-          s.shift();
-          return {...state, snakePos: [...s, head]};
-        }
-        default:
-          return {...state}
+    case MOVE: {
+      const s = [...snakePos];
+      const head = generateNewHead(s[s.length - 1], direction, fieldSize, itemSize)
+      if(!head) {
+        return state;
       }
+      s.shift();
+      return {...state, snakePos: [...s, head], prevTail: {...snakePos[0]}};
+    }
     case KEY_DOWN: {
       switch (action.key) {
         case 'ArrowDown': {
@@ -122,7 +137,22 @@ const keyDownReducer = (state = initState, action) => {
           return {...state};
       }
     }
+    case CHECK_EAT:{
+      const head = snakePos[snakePos.length - 1];
+      const isEate = checkImposition(head, fruitPos);
+      if(!isEate){
+        return state;
+      }
+      const newFruitPos = generateFruitPos(fieldSize, itemSize, snakePos);
+      return {...state, snakePos: [prevTail, ...snakePos], fruitPos: newFruitPos};
+    }
     default: return state;
+  }
+}
+
+const checkEatAC = () => {
+  return{
+    type: CHECK_EAT,
   }
 }
 
@@ -150,4 +180,5 @@ export {
   keyDownAC,
   moveAC,
   checkBoomAC,
+  checkEatAC
 }

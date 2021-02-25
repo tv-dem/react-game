@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 
-const Snake = ({pos, move, checkBoom, fail, setIntervalMove, clearIntervalMove}) => {
+const Snake = ({pos, move, checkBoom, fail, setIntervalMove, clearIntervalMove, checkEatAC}) => {
   useEffect(() => {
-    setIntervalMove([checkBoom, move], 100);
+    setIntervalMove([move, checkBoom, checkEatAC], 100);
     return () => {
       clearIntervalMove()
     };

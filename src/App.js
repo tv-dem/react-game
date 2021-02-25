@@ -8,7 +8,7 @@ import ModalWindow from "./components/ModalWindow/ModalWindow";
 function app({isFail}) {
   console.log('isFail:',isFail);
   return (
-    <div>
+    <div className={'wrapper'}>
       {isFail ? <ModalWindow/> : <SnakeFieldContainer/>}
     </div>
   );

@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from "react-redux";
 import SnakeField from "./SnakeField";
-import {checkBoomAC, keyDownAC, moveAC} from "../../redux/reducers/keyDownReducer";
+import {checkBoomAC, checkEatAC, keyDownAC, moveAC} from "../../redux/reducers/keyDownReducer";
 import {moveClearIntervalAC, moveSetIntervalAC} from "../../redux/reducers/setIntervalReducer";
 
 const mapStateToProps = ({position}) => {
@@ -18,6 +18,7 @@ const mapDispatchToProps = (dispatch) => {
     onKeyDown: (code) => dispatch(keyDownAC(code)),
     setIntervalMove: (callbacks, time) => dispatch(moveSetIntervalAC(callbacks, time)),
     clearIntervalMove: () => dispatch(moveClearIntervalAC()),
+    checkEatAC: () => dispatch(checkEatAC())
   }
 }
 
