@@ -1,25 +1,25 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
+import SnakeFieldContainer from "./components/SnakeField/snakeFieldContainer";
+import {connect} from "react-redux";
+import ModalWindow from "./components/ModalWindow/ModalWindow";
 
-function App() {
+
+function app({isFail}) {
+  console.log('isFail:',isFail);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {isFail ? <ModalWindow/> : <SnakeFieldContainer/>}
     </div>
   );
 }
+
+const mapStateToProps = ({position}) => {
+  return{
+    isFail: position.isFail,
+  }
+}
+
+const App = connect(mapStateToProps)(app)
 
 export default App;
