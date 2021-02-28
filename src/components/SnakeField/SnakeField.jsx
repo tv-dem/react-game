@@ -1,19 +1,21 @@
 import React, {useEffect} from 'react';
-import Snake from "../Snake/Snake";
-import FruitContainer from "../Fruit/FruitContainer";
 
-const SnakeField = ({pos, move, onKeyDown, checkBoom, fail, setIntervalMove, clearIntervalMove, checkEatAC}) => {
+import FruitContainer from "../Fruit/FruitContainer";
+import SnakeContainer from "../Snake/SnakeContainer";
+
+const SnakeField = ({onKeyDown}) => {
   useEffect(() => {
-    const event = document.addEventListener('keydown', ({code}) => {
-      onKeyDown(code)
-    })
+    const foo = (event) => {
+      onKeyDown(event)
+    }
+    document.addEventListener('keydown', foo)
     return () => {
-      document.removeEventListener('keydown', event);
+      document.removeEventListener('keydown', foo);
     }
   }, []);
   return (
     <div>
-      <Snake pos={pos} move={move} checkBoom={checkBoom} fail={fail} setIntervalMove={setIntervalMove} clearIntervalMove={clearIntervalMove} checkEatAC={checkEatAC}/>
+      <SnakeContainer />
       <FruitContainer />
     </div>
   )

@@ -3,22 +3,20 @@ import {connect} from "react-redux";
 import SnakeField from "./SnakeField";
 import {checkBoomAC, checkEatAC, keyDownAC, moveAC} from "../../redux/reducers/keyDownReducer";
 import {moveClearIntervalAC, moveSetIntervalAC} from "../../redux/reducers/setIntervalReducer";
+import {setRandomColorAC} from "../../redux/reducers/colorsReducer";
 
 const mapStateToProps = ({position}) => {
   return {
-    pos: position.snakePos,
-    fail: position.isFail,
+    size: position.fieldSize,
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return{
-    move: () => dispatch(moveAC()),
-    checkBoom: ()=>dispatch(checkBoomAC()),
-    onKeyDown: (code) => dispatch(keyDownAC(code)),
-    setIntervalMove: (callbacks, time) => dispatch(moveSetIntervalAC(callbacks, time)),
-    clearIntervalMove: () => dispatch(moveClearIntervalAC()),
-    checkEatAC: () => dispatch(checkEatAC())
+    onKeyDown: (event) => {
+      dispatch(keyDownAC(event.code))
+      dispatch(setRandomColorAC(event))
+    },
   }
 }
 

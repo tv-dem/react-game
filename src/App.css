@@ -1,12 +1,23 @@
-.wrapper{
+.game-wrapper{
     position: relative;
     height: 500px;
     width: 500px;
+    background-color: black;
     border: 10px solid black;
     margin: auto;
 }
 
-.snake{
+.statistic-wrapper{
+    width: 500px;
+    overflow: hidden;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    text-transform: uppercase;
+    font-size: 30px;
+}
+
+.snakeItem{
     position: absolute;
     height: 50px;
     width: 50px;
@@ -20,10 +31,121 @@
     background-color:aquamarine;
 }
 
-.modal{
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+ul{
+    margin: 0;
+    padding: 0;
 }
 
+span.settings-window{
+    color: #fff;
+}
+
+.modal, .settings-window{
+    color: white;
+    height: 100%;
+    width: 100%;
+    padding: 50px;
+    box-sizing: border-box;
+    background-color: black;
+}
+
+ul.modal-ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+ul.settings-window__ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+}
+
+ul.modal-ul > li{
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 30px;
+    cursor: pointer;
+    transition: color .3s ease;
+}
+
+ul.settings-window__ul .li-item{
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+}
+
+ul.settings-window__ul >li{
+    width: 100%;
+}
+
+ul.modal-ul > li:hover{
+    color: cornflowerblue;
+}
+
+li{
+    list-style: none;
+}
+
+
+.color-snake-options, .color-fruit-options{
+    color: #fff;
+    line-height: 30px;
+    font-size: 18px;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+}
+.color-snake-container, .color-fruit-container{
+    display: flex;
+}
+
+.color-snake-item, .color-fruit-item{
+    height: 30px;
+    width: 30px;
+    margin: 4px;
+    background-color: lightpink;
+    cursor: pointer;
+    transition: border-radius .2s ease;
+}
+
+.color-snake-item:hover, .color-fruit-item:hover{
+    border-radius: 100%;
+}
+
+
+.color-snake-item_active, .color-fruit-item_active{
+    border-radius: 100%;
+}
+
+
+.color-snake-options > *:first-child, .color-fruit-options > *:first-child{
+    width: 100px;
+}
+
+.size-options-wrapper{
+    display: flex;
+    justify-content: space-around;
+}
+ .size-options-wrapper > span {
+     cursor: pointer;
+     font-size: 20px;
+     text-transform: uppercase;
+ }
+
+ .size-options-wrapper_active{
+     border-bottom: 2px solid white;
+ }
+
+ .size-options-wrapper >*:first-child:hover{
+     color: red;
+ }
+.size-options-wrapper >*:last-child:hover{
+    color: greenyellow;
+}
 

@@ -4,7 +4,9 @@ import Fruit from "./Fruit";
 
 const mapStateToProps = (state) => {
   return{
+    color: state.colors.fruitColor,
     position: state.position.fruitPos,
+    size: state.position.itemSize,
   }
 }
 
