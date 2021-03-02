@@ -3,7 +3,7 @@ import React, {useEffect} from 'react';
 const Snake = ({pos, move, checkBoom, fail, setIntervalMove, clearIntervalMove, checkEat, color, speed, size}) => {
   // debugger
   useEffect(() => {
-    setIntervalMove([move, checkBoom, checkEat], speed);
+    setIntervalMove([checkBoom, move, checkEat], speed);
     return () => {
       clearIntervalMove()
     };

@@ -149,3 +149,42 @@ li{
     color: greenyellow;
 }
 
+.turn{
+    transition: transform .2s ease-in;
+    display: flex;
+    position: relative;
+    align-items: center;
+    height: 40px;
+    width: 100px;
+    border-radius: 30px;
+    background-color: darkgray;
+    cursor: pointer;
+}
+.turn:hover{
+    transform: scale(1.05);
+}
+
+.turn.active{
+    box-shadow: white 0 0 8px;
+}
+
+.turn.active::before{
+    transition: all .2s ease-in;
+    left: 57px;
+    margin-right: 5px;
+    border-radius: 100%;
+    background-color: white;
+}
+
+.turn::before{
+    position: absolute;
+    left: 0;
+    transition: all .2s ease-in;
+    content: '';
+    line-height: 0;
+    padding: 17px;
+    margin-left: 5px;
+    border-radius: 100%;
+    background-color: gray;
+}
+

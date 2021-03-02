@@ -11,6 +11,7 @@ const CHECK_BOOM = 'CHECK_BOOM';
 const CHECK_EAT = 'CHECK_EAT';
 const NEW_GAME = 'NEW_GAME';
 const CHANGE_SIZE = 'CHANGE_SIZE'
+const TOGGLE_SPEED = 'TOGGLE_SPEED'
 
 const initState = {
   addSpeed: true,
@@ -117,6 +118,9 @@ const keyDownReducer = (state = initState, action) => {
       console.log(action.itemSize)
       return {...state, itemSize: action.itemSize}
     }
+    case TOGGLE_SPEED:{
+      return {...state, addSpeed: !addSpeed}
+    }
     default:
       return state;
   }
@@ -148,6 +152,12 @@ const keyDownAC = (key) => {
   }
 }
 
+const toggleSpeed = () => {
+  return{
+    type: TOGGLE_SPEED,
+  }
+}
+
 const newGameAC = () => {
   return {
     type: NEW_GAME,
@@ -167,5 +177,8 @@ export {
   checkBoomAC,
   checkEatAC,
   newGameAC,
-  setSizeAC
+  setSizeAC,
+  toggleSpeed
 }
+
+

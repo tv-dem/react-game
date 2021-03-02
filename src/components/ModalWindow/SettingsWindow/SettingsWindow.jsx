@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import ColorOptions from "./colorOptions/ColorOptions";
 import ColorOptionsContainer from "./colorOptions/ColorOptionsContainer";
 import SizeOptionsContainer from "./SizeOptions/SizeOptionsContainer";
+import Turn from "../../Turn/Turn";
+import TurnContainer from "../../Turn/TurnContainer";
 
 const SettingsWindow = ({closeSettings}) => {
   useEffect(() => {
@@ -21,6 +23,7 @@ const SettingsWindow = ({closeSettings}) => {
         <SizeOptionsContainer/>
       </li>
       <li className={'li-item'}>speed</li>
+      <TurnContainer/>
     </ul>
   </div>
 }
