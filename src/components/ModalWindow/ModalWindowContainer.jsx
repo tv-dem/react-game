@@ -2,7 +2,11 @@ import React from "react";
 import {connect} from "react-redux";
 import ModalWindow from "./ModalWindow";
 import {newGameAC} from "../../redux/reducers/keyDownReducer";
-import {toggleModalWindowAC, toggleSettingsWindowAC} from "../../redux/reducers/openSettingsWindow";
+import {
+  toggleModalWindowAC,
+  toggleResultsWindowAC,
+  toggleSettingsWindowAC
+} from "../../redux/reducers/openSettingsWindow";
 
 const mapStateToProps = (state) => {
 
@@ -14,7 +18,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(newGameAC())
       dispatch(toggleModalWindowAC())
     },
-    openSettings: () => dispatch(toggleSettingsWindowAC())
+    openSettings: () => dispatch(toggleSettingsWindowAC()),
+    openBestResults: () => {
+      dispatch(toggleResultsWindowAC())
+    }
   }
 }
 

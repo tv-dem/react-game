@@ -4,6 +4,8 @@ import {
   checkImposition, RIGHT_DIRECTION, TOP_DIRECTION, BOTTOM_DIRECTION, LEFT_DIRECTION,
 
 } from './utils'
+import eatSound from '../../assets/eat.mp3'
+
 
 const KEY_DOWN = 'KEY_DOWN';
 const MOVE = 'MOVE';
@@ -14,6 +16,13 @@ const CHANGE_SIZE = 'CHANGE_SIZE'
 const TOGGLE_SPEED = 'TOGGLE_SPEED'
 
 const initState = {
+  bestResults: [],
+  sound: {
+    eatSound:{
+      sound: new Audio(eatSound),
+      doIt: true,
+    }
+  },
   addSpeed: true,
   speed: 100,
   fruitPos: {
@@ -38,16 +47,27 @@ const initState = {
   },
 }
 
+const createDate = (date) => {
+  const month = date.getMonth() + 1;
+  return `${date.getDay() < 10 ? '0' + date.getDay() : date.getDay()}:${month < 10 ? '0' + month : month}:${date.getFullYear()}
+  ${date.getHours()}:${date.getMinutes()}`;
+}
+
 
 const keyDownReducer = (state = initState, action) => {
-  const {direction, fieldSize, itemSize, snakePos, fruitPos, prevTail, score, bestScore, speed, addSpeed} = state;
+  const {direction, fieldSize, itemSize, snakePos, fruitPos, prevTail, score, bestScore, speed, addSpeed, bestResults} = state;
   switch (action.type) {
     case CHECK_BOOM: {
       const head = snakePos[snakePos.length - 1];
       const isFail = snakePos.findIndex((point, i) => {
         return checkImposition(head, point) && i !== snakePos.length - 1;
       })
-      return {...state, isFail: isFail !== -1}
+      return isFail === -1 ? state : {
+        ...state,
+        isFail: isFail !== -1,
+        score: 0,
+        bestResults:  [...bestResults, {score, time: createDate(new Date())}].sort((a, b) => a.score < b.score ? 1 : -1)
+      }
     }
     case MOVE: {
       const s = [...snakePos];
@@ -94,6 +114,9 @@ const keyDownReducer = (state = initState, action) => {
       if (!isEate) {
         return state;
       }
+      if(state.sound.eatSound.doIt) {
+        state.sound.eatSound.sound.play();
+      }
       const newFruitPos = generateFruitPos(fieldSize, itemSize, snakePos);
       const newScore = score + 1;
       return {
@@ -108,6 +131,7 @@ const keyDownReducer = (state = initState, action) => {
     case NEW_GAME: {
       return {
         ...initState,
+        bestResults,
         itemSize,
         addSpeed,
         bestScore,

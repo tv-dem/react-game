@@ -188,3 +188,60 @@ li{
     background-color: gray;
 }
 
+.back{
+    cursor: pointer;
+    transition: .2s ease-in;
+}
+
+.back:hover{
+    transform: scale(1.1);
+}
+
+.best-result-wrapper{
+    padding: 20px;
+    display: flex;
+    color: #fff;
+    justify-content: space-around;
+    font-size: 20px;
+}
+
+.best-result-wrapper ul >*:first-child{
+    text-transform: uppercase;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.best-result-wrapper ul >* {
+    padding: 5px 0;
+}
+
+.best-result-wrapper ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.best-result-container{
+    height: 500px;
+    width: 500px;
+    color: white;
+    position: relative;
+}
+
+.best-result-container span{
+    font-size: 24px;
+    text-transform: uppercase;
+}
+
+.no-res{
+    display: block;
+    margin: 50px 100px;
+}
+
+.best-result-container > *:last-child{
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    bottom: 50px;
+    margin: auto;
+}

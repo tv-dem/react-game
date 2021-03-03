@@ -9,7 +9,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return{
-    closeSettings: ({code}) => {
+    closeSettings: ()=> dispatch(toggleSettingsWindowAC()),
+    OnEsc: ({code}) => {
       if(code === 'Escape') {
         dispatch(toggleSettingsWindowAC())
       }

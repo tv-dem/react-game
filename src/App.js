@@ -1,21 +1,22 @@
 import './App.css';
 import React from 'react';
 import SnakeFieldContainer from "./components/SnakeField/snakeFieldContainer";
-import {connect} from "react-redux";
-import ModalWindow from "./components/ModalWindow/ModalWindow";
 import ModalWindowContainer from "./components/ModalWindow/ModalWindowContainer";
 import StatisticContainer from "./components/Statistic/StatisticContainer";
 import SettingsWindowContainer from "./components/ModalWindow/SettingsWindow/SettingsWindowContainer";
+import ResultsWindowContainer from "./components/ModalWindow/ResultsWindow/ResultsWindowContainer";
+import {connect} from "react-redux";
 
 
-function app({isFail, size, isSettings}) {
-  console.log('isFail:',isFail);
+function app({isFail, size, isSettings, isBestResultsWindow}) {
+  console.log(isSettings, isBestResultsWindow)
   return (
     <div>
       <div style={{width: size +'px', height: size+'px'}} className={'game-wrapper'}>
-        {isFail && !isSettings && <ModalWindowContainer/>}
-        {!isFail && !isSettings && <SnakeFieldContainer/>}
+        {isFail && !isSettings && !isBestResultsWindow && <ModalWindowContainer/>}
+        {!isFail && <SnakeFieldContainer/>}
         {isSettings && <SettingsWindowContainer/>}
+        {isBestResultsWindow && <ResultsWindowContainer/>}
       </div>
       <StatisticContainer/>
     </div>
@@ -28,6 +29,7 @@ const mapStateToProps = ({position, window}) => {
     size: position.fieldSize,
     isFail: position.isFail,
     isSettings: window.isSettingsWindow,
+    isBestResultsWindow: window.isBestResultsWindow,
   }
 }
 
