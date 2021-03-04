@@ -12,14 +12,14 @@ const ResultsWindow = ({results, OnEsc, closeSettings}) => {
         <div className={'best-result-wrapper'}>
           <ul>
             <li>Data</li>
-            {results.map(({time}) => {
-              return <li>{time}</li>
+            {results.map(({time}, i) => {
+              return <li key={i}>{time}</li>
             })}
           </ul>
           <ul>
             <li>score</li>
-            {results.map(({score}) => {
-              return <li>{score}</li>
+            {results.map(({score}, i) => {
+              return <li key={i}>{score}</li>
             })}
           </ul>
         </div> :

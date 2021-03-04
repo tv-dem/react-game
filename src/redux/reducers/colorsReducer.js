@@ -5,15 +5,15 @@ const CHANGE_FRUIT_COLOR = 'CHANGE_FRUIT_COLOR';
 const SET_RANDOM_COLORS = 'SET_RANDOM_COLORS';
 
 const initState = {
-  snakeColor: 'cornflowerblue',
+  snakeColor: '#9ca7ff',
   fruitColor: 'aquamarine',
   colors: [
-    'cornflowerblue',
+    '#9ca7ff',
     'aquamarine',
-    '#fff',
-    '#555',
-    '#e23fff',
-    '#005cff'
+    '#f5b1b1',
+    '#f3d0ff',
+    '#daffc0',
+    '#fff9c3'
   ]
 }
 

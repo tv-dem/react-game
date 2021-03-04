@@ -1,15 +1,18 @@
 import './App.css';
-import React from 'react';
+import React, {useEffect} from 'react';
 import SnakeFieldContainer from "./components/SnakeField/snakeFieldContainer";
 import ModalWindowContainer from "./components/ModalWindow/ModalWindowContainer";
 import StatisticContainer from "./components/Statistic/StatisticContainer";
 import SettingsWindowContainer from "./components/ModalWindow/SettingsWindow/SettingsWindowContainer";
 import ResultsWindowContainer from "./components/ModalWindow/ResultsWindow/ResultsWindowContainer";
 import {connect} from "react-redux";
+import {playMusicAC, toggleMusicAC} from "./redux/reducers/mainReducer";
 
 
-function app({isFail, size, isSettings, isBestResultsWindow}) {
-  console.log(isSettings, isBestResultsWindow)
+function Appp({isFail, size, isSettings, isBestResultsWindow, startPlayMusic, stopPlayMusic}) {
+  useEffect(()=>{
+    startPlayMusic();
+  }, []);
   return (
     <div>
       <div style={{width: size +'px', height: size+'px'}} className={'game-wrapper'}>
@@ -26,6 +29,7 @@ function app({isFail, size, isSettings, isBestResultsWindow}) {
 
 const mapStateToProps = ({position, window}) => {
   return{
+    audio: position.sound.url,
     size: position.fieldSize,
     isFail: position.isFail,
     isSettings: window.isSettingsWindow,
@@ -33,6 +37,13 @@ const mapStateToProps = ({position, window}) => {
   }
 }
 
-const App = connect(mapStateToProps)(app)
+const mapDispatchToProps = (dispatch) => {
+  return{
+    startPlayMusic: ()=>dispatch(playMusicAC()),
+    stopPlayMusic: ()=>dispatch(toggleMusicAC())
+  }
+}
+
+const App = connect(mapStateToProps, mapDispatchToProps)(Appp)
 
 export default App;

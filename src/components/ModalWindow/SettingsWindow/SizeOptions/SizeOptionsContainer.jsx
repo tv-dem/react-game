@@ -1,6 +1,5 @@
-import React from "react";
 import {connect} from "react-redux";
-import {setSizeAC} from "../../../../redux/reducers/keyDownReducer";
+import {setSizeAC} from "../../../../redux/reducers/mainReducer";
 import SizeOptions from "./SizeOptions";
 
 const mapStateToProps = (state) => {
@@ -13,7 +12,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     setSize: (e) => {
-      console.log(e.target.textContent)
       const size = e.target.textContent;
       let rez = 50;
       switch (size){

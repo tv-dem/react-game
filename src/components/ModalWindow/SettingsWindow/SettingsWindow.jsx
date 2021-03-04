@@ -9,18 +9,20 @@ const SettingsWindow = ({closeSettings, OnEsc}) => {
     return () => {
       document.removeEventListener('keydown', OnEsc)
     }
-  }, [])
+  })
   return <div className={'settings-window'}>
     <ul className={'settings-window__ul'}>
       <li>
         <span className={'li-item'} >color</span>
         <ColorOptionsContainer/>
       </li>
-      <li className>
+      <li>
         <span className={'li-item'} >size</span>
         <SizeOptionsContainer/>
       </li>
-      <li className={'li-item'}>speed</li>
+      <li className={'li-item'}>
+       speed
+      </li>
       <TurnContainer/>
 
       <li className={'li-item back'} onClick={closeSettings}>back</li>

@@ -1,5 +1,4 @@
-import React from 'react';
-import {toggleSpeed} from "../../redux/reducers/keyDownReducer";
+import {toggleSpeed} from "../../redux/reducers/mainReducer";
 import {connect} from "react-redux";
 import Turn from "./Turn";
 

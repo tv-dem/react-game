@@ -1,5 +1,4 @@
-import React from 'react';
-import {toggleResultsWindowAC, toggleSettingsWindowAC} from "../../../redux/reducers/openSettingsWindow";
+import {toggleResultsWindowAC} from "../../../redux/reducers/windowReducer";
 import {connect} from "react-redux";
 import ResultsWindow from "./ResultsWindow";
 

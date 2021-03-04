@@ -1,17 +1,16 @@
 import {combineReducers, createStore} from 'redux'
-import keyDownReducer from "./reducers/keyDownReducer";
+import mainReducer from "./reducers/mainReducer";
 import setIntervalReducer from "./reducers/setIntervalReducer";
 import colorsReducer from "./reducers/colorsReducer";
-import openSettingsWindowReducer from "./reducers/openSettingsWindow";
+import openSettingsWindowReducer from "./reducers/windowReducer";
 
 const persistedState = localStorage.getItem('state')
   ? JSON.parse(localStorage.getItem('state'))
   : {}
 
-console.log(persistedState)
 
 const store = createStore(combineReducers({
-  position: keyDownReducer,
+  position: mainReducer,
   intervals: setIntervalReducer,
   colors: colorsReducer,
   window: openSettingsWindowReducer,

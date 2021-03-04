@@ -1,9 +1,8 @@
-import React from 'react'
 import {connect} from "react-redux";
-import {checkBoomAC, checkEatAC, moveAC} from "../../redux/reducers/keyDownReducer";
+import {checkBoomAC, checkEatAC, moveAC} from "../../redux/reducers/mainReducer";
 import {moveClearIntervalAC, moveSetIntervalAC} from "../../redux/reducers/setIntervalReducer";
 import Snake from "./Snake";
-import {toggleModalWindowAC} from "../../redux/reducers/openSettingsWindow";
+import {toggleModalWindowAC} from "../../redux/reducers/windowReducer";
 
 const mapStateToProps = ({position, colors}) => {
   return {
@@ -12,6 +11,7 @@ const mapStateToProps = ({position, colors}) => {
     fail: position.isFail,
     speed: position.speed,
     size: position.itemSize,
+    direction: position.direction,
   }
 }
 

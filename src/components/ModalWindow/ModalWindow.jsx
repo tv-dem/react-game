@@ -1,6 +1,10 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
-const ModalWindow = ({createNewGame, openSettings, openBestResults}) => {
+const ModalWindow = ({createNewGame, openSettings, openBestResults, createNewGameBySpace}) => {
+  useEffect(()=>{
+    document.addEventListener('keydown', createNewGameBySpace)
+    return ()=> document.removeEventListener('keydown', createNewGameBySpace)
+  })
   return <div className={'modal'}>
       <ul className={'modal-ul'}>
         <li onClick={createNewGame}>New game</li>

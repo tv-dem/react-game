@@ -1,10 +1,8 @@
-import React from "react";
 import {connect} from "react-redux";
 import ColorOptions from "./ColorOptions";
 import {setFruitColorAC, setSnakeColorAC} from "../../../../redux/reducers/colorsReducer";
 
 const mapStateToProps = (state) => {
-  // debugger
   return{
     colors: state.colors.colors,
     snake: state.colors.snakeColor,

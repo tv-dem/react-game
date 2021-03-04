@@ -1,10 +1,11 @@
 import React from 'react';
 
-const SizeOptions = ({fieldSize, itemSize, setSize}) => {
-  const active = 'size-options-wrapper_active';
+const SizeOptions = ({itemSize, setSize}) => {
+  const active = itemSize===25 ? 'size-options-wrapper_active' : ' ';
+  const active2 = itemSize===50 ? 'size-options-wrapper_active' : ' ';
   return <div className={'size-options-wrapper'}>
-    <span className={itemSize===25?active:''} onClick={setSize}>small</span>
-    <span className={itemSize===50?active:''} onClick={setSize}>large</span>
+    <span className={active} onClick={setSize}>small</span>
+    <span className={active2} onClick={setSize}>large</span>
   </div>
 }
 

@@ -5,12 +5,9 @@ import SnakeContainer from "../Snake/SnakeContainer";
 
 const SnakeField = ({onKeyDown}) => {
   useEffect(() => {
-    const foo = (event) => {
-      onKeyDown(event)
-    }
-    document.addEventListener('keydown', foo)
+    document.addEventListener('keydown', onKeyDown)
     return () => {
-      document.removeEventListener('keydown', foo);
+      document.removeEventListener('keydown', onKeyDown);
     }
   }, []);
   return (

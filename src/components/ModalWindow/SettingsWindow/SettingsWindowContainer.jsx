@@ -1,11 +1,6 @@
-import React from "react";
-import {toggleSettingsWindowAC} from "../../../redux/reducers/openSettingsWindow";
+import {toggleSettingsWindowAC} from "../../../redux/reducers/windowReducer";
 import SettingsWindow from "./SettingsWindow";
 import {connect} from "react-redux";
-
-const mapStateToProps = (state) => {
-
-}
 
 const mapDispatchToProps = (dispatch) => {
   return{

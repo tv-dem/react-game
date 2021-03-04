@@ -1,8 +1,6 @@
-import React from 'react'
 import {connect} from "react-redux";
 import SnakeField from "./SnakeField";
-import {checkBoomAC, checkEatAC, keyDownAC, moveAC} from "../../redux/reducers/keyDownReducer";
-import {moveClearIntervalAC, moveSetIntervalAC} from "../../redux/reducers/setIntervalReducer";
+import {keyDownAC} from "../../redux/reducers/mainReducer";
 import {setRandomColorAC} from "../../redux/reducers/colorsReducer";
 
 const mapStateToProps = ({position}) => {

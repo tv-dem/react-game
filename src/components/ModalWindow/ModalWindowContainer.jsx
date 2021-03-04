@@ -1,19 +1,20 @@
-import React from "react";
 import {connect} from "react-redux";
 import ModalWindow from "./ModalWindow";
-import {newGameAC} from "../../redux/reducers/keyDownReducer";
+import {newGameAC} from "../../redux/reducers/mainReducer";
 import {
   toggleModalWindowAC,
   toggleResultsWindowAC,
   toggleSettingsWindowAC
-} from "../../redux/reducers/openSettingsWindow";
-
-const mapStateToProps = (state) => {
-
-}
+} from "../../redux/reducers/windowReducer";
 
 const mapDispatchToProps = (dispatch) => {
-  return{
+  return {
+    createNewGameBySpace: ({code}) => {
+      if (code === 'Space') {
+        dispatch(newGameAC())
+        dispatch(toggleModalWindowAC())
+      }
+    },
     createNewGame: () => {
       dispatch(newGameAC())
       dispatch(toggleModalWindowAC())
@@ -27,4 +28,4 @@ const mapDispatchToProps = (dispatch) => {
 
 const ModalWindowContainer = connect(null, mapDispatchToProps)(ModalWindow);
 
-export default  ModalWindowContainer
+export default ModalWindowContainer

@@ -1,4 +1,3 @@
-import React from 'react';
 import Statistic from "./Statistic";
 import {connect} from "react-redux";
 
