@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+из-за того что криво начала делать игру, не получается сделать ПР, поэтому напишу описание тут в ридми
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+деплой - 
 
-## Available Scripts
+## Критерии оценки:
 
-In the project directory, you can run:
+**Максимальный балл за задание: 100 баллов**.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Basic scope +30 (30)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- [X] вёрстка, дизайн, UI. Выполняются требования к оформлению приложения +10(10)
+- [X] эффекты анимации. Анимация ходов, перемещения фигур, допустимых и недопустимых ходов, начала и окончания игры, победы и поражения и т.д +10(10)
+- [X] механика игры. Ходы, перемещения фигур, набранные баллы, окончание игры и т.д. подчиняются определённым свойственным игре правилам +10(10)
 
-### `npm test`
+### Advanced scope +50 (45)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [X] звуки и музыка. В игре есть звуки и музыка, и есть настройки звуков и музыки: возможность вкл/откл звуки, вкл/откл музыку, регулировать громкость звуков, регулировать громкость музыки +10(5) внизу под окошком с игрой можно вкл/выкл
+- [X] настройки игры. Есть не меньше трёх настроек разных опций игры, например, внешний вид игрового поля и фигур, сложность игры, определение порядка ходов. Речь не про настройки звуков и музыки, которые проверялись и оценивались в предыдущем пункте. Это должны быть настройки разных опций, а не три параметра одной опции, например, размера игрового поля +10(10) имеются настройки цветов, размера поля и скорости змейки(убрать ускорение/оставить)
+- [X] статистика. Пользователь информируется о состоянии игры, ведётся запись ходов, побед и поражений, времени игры, либо отображается другая статистика игры. Есть таблица рекордов, в которой сохраняются результаты предыдущих 10 игр +10 (10)
+- [X] сохранение состояния игры при перезагрузке страницы. Сохраняются все опции игры: ходы, набранные очки, положение фигур и т д. Состояние игры сохраняется без необходимости кликать по кнопке save. Есть кнопка new game для запуска новой игры +10 (10)
+- [X] возможность управления игрой с клавиатуры или не меньше пяти hot keys. Есть список горячих клавиш для управления игрой с клавиатуры +10 (10) 
+   hotKeys: wsda и стрелки для передвижения, tab - рандомно поставить цвета змейки во время игры, m - вкл/выкл музыку, e - вкл/выкл эффект поедания, пробел - начать игру, esc вернуться назад в опциях и скоре
 
-### `npm run build`
+### Hacker scope +20 (0)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- [ ] автопроигрывание игры. Есть кнопка Autoplay запускающая игру в автоматическом режиме. Это может быть отдельная партия игры (крестики-нолики, шашки, шахматы, морской бой, судоку и т.д.). Для бесконечных игр (тетрис, Flappy Bird и т.д), игра зацикливается не раньше чем через 30 ходов. Речь не про автозавершение начатой игры, автопроигрывание игры начинает игру с пустого поля или стандартной раскладки и показывает как эта игра сама играет без пользователя +10 (0)
+- [ ] дополнительная функциональность. Реализована достаточно сложная в реализации дополнительная функциональность, которая улучшает качество игры. В качестве дополнительной функциональности рекомендуется создать и использовать бекенд, например, для хранения счёта игры. Также может быть и другая дополнительная функциональность, например, 3d игра, написана логика для компьютерного противника, есть сетевой режим игры, и т.д +10 (0)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+*75/100*
